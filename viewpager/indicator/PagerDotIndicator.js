@@ -46,10 +46,11 @@ export default class PagerDotIndicator extends Component {
         for (let i = 0; i < pageCount; i++) {
             let isSelect = i === this.state.selectedIndex
             dotsView.push(
-                <View
-                    style={[styles.dot, isSelect ? styles.selectDot : null, isSelect ? selectedDotStyle : dotStyle]}
-                    key={i}
-                />
+                <TouchableOpacity key={i} onPress={()=> this.props.pager.setPage(i)}>
+                    <View
+                        style={[styles.dot, isSelect ? styles.selectDot : null, isSelect ? selectedDotStyle : dotStyle]}
+                    />
+                </TouchableOpacity>
             )
         }
         return (
